@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Container" style="height: 449px; flex-grow: 1; justify-content: flex-start; align-items: center;">
+        <ui:GroupBox style="height: 133px; width: 186px; padding-left: 0; padding-top: 0; padding-bottom: 0; left: auto;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/buttonssosigningoogle.png?fileID=21300000&amp;guid=f09eae8c0ea04254b90c5386a034a225&amp;type=3#buttonssosigningoogle&apos;); height: 93px; -unity-background-scale-mode: stretch-to-fill;" />
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" text="filler text" />
+        </ui:GroupBox>
+        <ui:GroupBox style="height: 133px; width: 186px; padding-left: 0; padding-top: 0; padding-bottom: 0; left: -210px; top: -70px;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/buttonssosigningoogle.png?fileID=21300000&amp;guid=f09eae8c0ea04254b90c5386a034a225&amp;type=3#buttonssosigningoogle&apos;); height: 93px; -unity-background-scale-mode: stretch-to-fill;" />
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" text="filler text" />
+        </ui:GroupBox>
+        <ui:GroupBox style="height: 133px; width: 186px; padding-left: 0; padding-top: 0; padding-bottom: 0; left: 210px; top: -210px;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/buttonssosigningoogle.png?fileID=21300000&amp;guid=f09eae8c0ea04254b90c5386a034a225&amp;type=3#buttonssosigningoogle&apos;); height: 93px; -unity-background-scale-mode: stretch-to-fill;" />
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" text="filler text" />
+        </ui:GroupBox>
+        <ui:GroupBox style="height: 133px; width: 186px; padding-left: 0; padding-top: 0; padding-bottom: 0; left: -210px; top: -204px;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/buttonssosigningoogle.png?fileID=21300000&amp;guid=f09eae8c0ea04254b90c5386a034a225&amp;type=3#buttonssosigningoogle&apos;); height: 93px; -unity-background-scale-mode: stretch-to-fill;" />
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" text="filler text" />
+        </ui:GroupBox>
+        <ui:GroupBox style="height: 133px; width: 186px; padding-left: 0; padding-top: 0; padding-bottom: 0; left: 210px; top: -344px;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/buttonssosigningoogle.png?fileID=21300000&amp;guid=f09eae8c0ea04254b90c5386a034a225&amp;type=3#buttonssosigningoogle&apos;); height: 93px; -unity-background-scale-mode: stretch-to-fill;" />
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" text="filler text" />
+        </ui:GroupBox>
+        <ui:GroupBox name="GroupBox" style="height: 133px; width: 186px; padding-left: 0; padding-top: 0; padding-bottom: 0; left: auto; top: -391px;">
+            <ui:Button text="Button" display-tooltip-when-elided="true" style="background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/buttonssosigningoogle.png?fileID=21300000&amp;guid=f09eae8c0ea04254b90c5386a034a225&amp;type=3#buttonssosigningoogle&apos;); height: 93px; -unity-background-scale-mode: stretch-to-fill;" />
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" text="filler text" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>
