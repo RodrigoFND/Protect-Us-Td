@@ -38,6 +38,11 @@ public class UITowerDisplay : MonoBehaviour
         ChangeUiDisplay();
     }
 
+    private void SetTowers(List<SOTowerLevel> towers)
+    {
+        this.towers = towers.Where(t => t.IsBought).ToList();
+    }
+
     private void onTowerChanged(SOTowerLevel tower)
     {
         if(tower == null)
@@ -47,10 +52,10 @@ public class UITowerDisplay : MonoBehaviour
         } else
         {
             ToogleTrashButtonDisplay(true);
-            towers = tower.NextTowers.ToList();
+            var nextTowers = tower.NextTowers.ToList();
+            SetTowers(nextTowers);
         }
         ChangeUiDisplay();
-
     }
 
     private void ChangeUiDisplay()
@@ -84,10 +89,12 @@ public class UITowerDisplay : MonoBehaviour
        var tower = _towerPlataformStateManager.TowerPlataformDataState.TowerChanged;
         if(tower != null)
         {
-            towers = tower.NextTowers.ToList();
+            var towers = tower.NextTowers.ToList();
+            SetTowers(towers);
         } else
         {
-            towers = GlobalStateManager.stateData.towersChoosen;
+            var towers = PlayerSingleton.TowersChoosen;
+            SetTowers(towers);
         }
     }
 

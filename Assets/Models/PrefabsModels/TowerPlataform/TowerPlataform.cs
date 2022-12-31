@@ -43,6 +43,7 @@ public class TowerPlataform : MonoBehaviour
             return;
         }
         _towerInPlace = Instantiate(towerLevel.TowerPrefab, _towerInstatePosition.transform.position, Quaternion.identity);
+        _towerInPlace.transform.SetParent(gameObject.transform);
         _towerPlataformStateManager.TowerChangedAction(towerLevel);
     }
   

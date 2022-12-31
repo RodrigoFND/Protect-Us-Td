@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fd1405f7ac82142978d6db97a7df45, type: 3}
+  m_Name: Tower2
+  m_EditorClassIdentifier: 
+  _id: 2
+  _towerName: 
+  _towerSprite: {fileID: 0}
+  _towerPreFab: {fileID: 8538918342130352688, guid: dd9f0e68be8695749a169a6abac56a46, type: 3}
+  _towerLevel: 0
+  _pointsRequiredToUse: 200
+  _nextTowers:
+  - {fileID: 11400000, guid: c05730dc8fc637a46ae96fd560212d67, type: 2}
+  - {fileID: 11400000, guid: b52f0ef742909d640a4a44928e2c0c2e, type: 2}
+  - {fileID: 11400000, guid: dc577bbcd7f8c0e45afd97cc5d21f8b8, type: 2}
+  _isBought: 0
+  _buyTowerRequirements:
+    PointsCostToBuy: 0
+    towersRequired: []
