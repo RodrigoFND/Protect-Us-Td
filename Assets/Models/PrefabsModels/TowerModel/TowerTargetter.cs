@@ -1,5 +1,7 @@
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TowerTargetter : Targetter
 {
@@ -27,14 +29,16 @@ public class TowerTargetter : Targetter
     public void SendActionEnemiesAround()
     {
         List<DamageBehavior> enemiesInState = _towerStateManager.TowerStateDate._enemiesAround;
-      
         if (enemiesInState == null || enemiesInState.Count != _allTargetsInRange.Count)
         {
             _towerStateManager.EnemiesAroundAction(_allTargetsInRange);
             return;
         }
-    //    IEnumerable<DamageBehavior> except =
-    //_allTargetsInRange.Except(enemiesInState);
+        IEnumerable<DamageBehavior> except = _allTargetsInRange.Except(enemiesInState);
+        if(except.Count() > 0)
+        {
+            _towerStateManager.EnemiesAroundAction(_allTargetsInRange);
+        }  
     }
 
     public void SendActionSingleTargetLocked()

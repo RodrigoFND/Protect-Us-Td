@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Tower : MonoBehaviour, IBasicStatus
 {
     [SerializeField]
     private TowerStateManager _towerStateManager;
@@ -55,4 +55,9 @@ public class Tower : MonoBehaviour
         _towerStateManager.TowerStatusChangedAction(_towerStatus);
     }
 
+    public void MyTEST()
+    {
+        IBasicStatus TEST = new()
+        throw new System.NotImplementedException();
+    }
 }

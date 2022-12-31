@@ -3,12 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="BallCannon",menuName = "Scriptable Objects / Skills / TowerSkills / CannonBall")]
 public class SoSkillCannonBall : SOSkills
 {
+
     public override void useSkill(UseSkillAttributes useSkillAttributes)
     {
-        
         try
         {
-            Debug.Log("Tried");
             if (!useSkillRequeriment()) return;
             if (useSkillAttributes == null) return;
             Instantiate(_startHabilityParticle, useSkillAttributes.StartPoint.transform.position, Quaternion.identity);
@@ -18,7 +17,6 @@ public class SoSkillCannonBall : SOSkills
             DamageBehavior damageBehavior = useSkillAttributes.DamageBehavior;
             int damage = useSkillAttributes.AmountDamage + _amount; 
             damageBehavior.ApplyDamage(damage);
-            
 
         } catch
         {
