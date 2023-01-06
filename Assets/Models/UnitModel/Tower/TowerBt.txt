@@ -1,0 +1,25 @@
+tree "Root"
+	fallback
+		tree "Attack"
+		tree "Idle"
+
+tree "Attack"
+	while CheckCanAttack
+		sequence
+			CheckEnemiesAround
+			LockClosestTarget
+			FindAndSetActiveSkillReady
+			PlaySkillAttackAnimation
+			WaitSkillStartToPlay
+			Wait 2.0
+			while not SkillAnimationHasEnded
+				sequence
+					RotateTowardsTargetLocked
+		
+			
+tree "Idle"
+	while not CheckCanAttack
+		sequence
+			IdleAnimation
+
+			    

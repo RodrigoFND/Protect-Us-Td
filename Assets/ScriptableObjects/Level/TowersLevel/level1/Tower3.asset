@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 3
   _towerName: 
-  _towerSprite: {fileID: 0}
+  _towerSprite: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
   _towerPreFab: {fileID: 0}
   _towerLevel: 0
   _pointsRequiredToUse: 300
