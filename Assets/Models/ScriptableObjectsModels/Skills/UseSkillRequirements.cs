@@ -9,8 +9,9 @@ public class UseSkillRequirements
     protected IHealable _healable;
     protected IAnimation _animation;
     protected IControlUnit _controlUnit;
+    protected IAttackable _attackable;
 
-    public UseSkillRequirements(int amount, IBasicStatus basicStatus, ITargatable targetable, IHittable hittable, IHealable healable, IAnimation animation, IControlUnit controlUnit)
+    public UseSkillRequirements(int amount, IBasicStatus basicStatus, ITargatable targetable, IHittable hittable, IHealable healable, IAnimation animation, IControlUnit controlUnit, IAttackable attackable)
     {
         _amount = amount;
         _basicStatus = basicStatus;
@@ -19,6 +20,7 @@ public class UseSkillRequirements
         _healable = healable;
         _animation = animation;
         _controlUnit = controlUnit;
+        _attackable = attackable;
     }
 
     public int Amount => _amount;
@@ -28,5 +30,6 @@ public class UseSkillRequirements
     public IHealable Healable => _healable;
     public IAnimation Animation => _animation;
     public IControlUnit ControlUnit => _controlUnit;
+    public IAttackable Attackable => _attackable;
 
 }

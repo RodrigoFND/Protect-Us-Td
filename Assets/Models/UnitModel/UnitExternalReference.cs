@@ -21,6 +21,7 @@ public class UnitExternalReference : MonoBehaviour
     private IHittable _Ihittable;
     private IAnimation _Ianimation;
     private IControlUnit _IcontrolUnit;
+    private IAttackable _Iattackable;
 
     private void Start()
     {
@@ -30,12 +31,13 @@ public class UnitExternalReference : MonoBehaviour
         _Ihittable = _hittable;
         _Ianimation = _unit;
         _IcontrolUnit = _unit;
+        _Iattackable = _unit;
         setSkillRequirements();
     }
 
     public void setSkillRequirements()
     {
-        _useSkillRequirements = new UseSkillRequirements(10, _IbasicStatus, _Itargetter, _Ihittable,_Ihealable, _Ianimation, _IcontrolUnit);
+        _useSkillRequirements = new UseSkillRequirements(10, _IbasicStatus, _Itargetter, _Ihittable,_Ihealable, _Ianimation, _IcontrolUnit, _Iattackable);
         _unitStateManager.ExternalReferenceChangeAction(this);
     }
 

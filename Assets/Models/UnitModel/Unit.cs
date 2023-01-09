@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Unit : MonoBehaviour, IBasicStatus, IHealable, IAnimation, IControlUnit
+public class Unit : MonoBehaviour, IBasicStatus, IHealable, IAnimation, IControlUnit, IAttackable
 {
     [SerializeField]
     protected UnitStateManager _unitStateManager;
     [SerializeField]
     protected Animator _animator;
+    [SerializeField]
+    protected GameObject _attackPosition;
     protected BasicStatus _basicStatus = new BasicStatus();
     protected List<SOSkills> _classSkills = new List<SOSkills>();
     protected bool _isUnitInAutomaticControl;
@@ -22,7 +24,10 @@ public class Unit : MonoBehaviour, IBasicStatus, IHealable, IAnimation, IControl
     public int CriticalPower => _basicStatus.CriticalPower;
     public int Defense => _basicStatus.Defense;
     public float Range => _basicStatus.Range;
-    public bool IsUnitInAutomaticControl;
+
+    public GameObject AttackPosition => _attackPosition;
+
+    public bool IsUnitInAutomaticControl => _isUnitInAutomaticControl;
 
     public virtual void SetHp(int amount)
     {
@@ -70,7 +75,7 @@ public class Unit : MonoBehaviour, IBasicStatus, IHealable, IAnimation, IControl
 
     public void ChangeUnitControl(bool isAutomatic)
     {
-        IsUnitInAutomaticControl = isAutomatic;
+        _isUnitInAutomaticControl = isAutomatic;
         _unitStateManager.UnitControlStateChangedAction(isAutomatic);
     }
 

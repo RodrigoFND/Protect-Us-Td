@@ -1,100 +1,79 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject _target;
-    [SerializeField]
-
-    private GameObject _projectileComponent;
-    private Vector3 _targetLastPosition;
-    [SerializeField]
-    public int speed;
-    [SerializeField]
-    public Rigidbody rb;
-    private bool _hasColidded = false;
-    [SerializeField]
-    private float _destroyTimeAfterCollide = 3;
     
-
-    // Start is called before the first frame update
+    private Rigidbody rb;
+    [SerializeField]
+    private SOProjectileSkill _skill;
+    public UseSkillRequirements _useSkillRequirements;
+    public GameObject _target;
+    private Vector3 _targetLastPosition;
+    private float _speed;
     void Start()
     {
+      rb = GetComponent<Rigidbody>();
 
+        _target = _skill.Target;
+        _useSkillRequirements = _skill.UseSkillRequerimentsProjectileReference;
+        _speed = _skill.Speed;
+
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(_skill);
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSkill(SOProjectileSkill skill)
     {
-        transform.Rotate(Vector3.right, 800 * Time.deltaTime,Space.World);
-        transform.position += transform.forward * speed * Time.deltaTime;
-        //if (_target != null) GoToTheTarget(_target.transform.position);
-        //else rb.AddForce(transform.forward * speed);
-        //if (_hasColidded) Destroy(gameObject);
-        //CopyTargetLastPosition(_target);
+        _skill = Instantiate(skill);
+
     }
 
-    private void CopyTargetLastPosition (GameObject transformToCopy)
+    public void SetSkillRequirements(UseSkillRequirements useSkillRequirements)
+    {
+        _useSkillRequirements = useSkillRequirements;
+    }
+    private void CopyTargetLastPosition(GameObject transformToCopy)
     {
         if (transformToCopy == null) return;
         _targetLastPosition = transformToCopy.transform.position;
+    }
+
+    void Update()
+    {
+        CopyTargetLastPosition(_target);
+        if (_target != null) GoToTheTarget(_target.transform.position);
+        else GoToTheTarget(_targetLastPosition);
+        DestroyWhenReachTarget();
+
     }
 
     private void GoToTheTarget(Vector3 targetPosition)
     {
         try
         {
-            rb.AddForce(transform.forward * speed);
-            transform.LookAt(_target.transform.position);
-
-            //Vector3 dir = (targetPosition - transform.position).normalized;
-            //Vector3 deltaPosition = speed * dir * Time.deltaTime;
-            //rb.MovePosition(transform.position + deltaPosition);
-            //transform.LookAt(targetPosition);
-
-        } catch { }
-   
-     
-      
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        StopWhenColideWithTerrain(other);
-        StopWhenColideWithTarget(other);
-    }
-
-    private void StopWhenColideWithTarget(Collider other)
-    {
-        if (_target != null && other.transform.gameObject == _target.transform.gameObject)
-        {
-            Debug.Log("i collide");
-            transform.SetParent(other.transform);
-            speed = 0;
-            rb.isKinematic = true;
-            _hasColidded = true;
+            Vector3 dir = (targetPosition - transform.position).normalized;
+            Vector3 deltaPosition = _speed * dir * Time.deltaTime;
+            rb.MovePosition(transform.position + deltaPosition);
+            transform.LookAt(targetPosition);
         }
-
+        catch { }
     }
 
-
-
-    private void StopWhenColideWithTerrain(Collider other)
+    private void DestroyWhenReachTarget()
     {
-        if (other is TerrainCollider)
+        var checkHitTheTarget = (_targetLastPosition - transform.position).sqrMagnitude < 0.2;
+        if (_targetLastPosition != null && checkHitTheTarget)
         {
-            Debug.Log("Terrain Collider");
-            speed = 0;
-            rb.isKinematic = true;
-            _hasColidded = true;
+            _skill.InitializeSkillHitEffect(_useSkillRequirements);
+            Destroy(gameObject);
+        
         }
-
     }
-
 }

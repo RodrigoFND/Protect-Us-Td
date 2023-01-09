@@ -102,7 +102,34 @@ public abstract class SOSkills : ScriptableObject
     }
 
     public abstract bool UseSkillRequeriment(UseSkillRequirements useSkillRequirements);
-    public abstract void PlaySkillAnimation(UseSkillRequirements useSkillRequirements,out bool playAnimationFailed);
+    public virtual void PlaySkillAnimation(UseSkillRequirements useSkillRequirements,out bool playAnimationFailed)
+    {
+        try
+        {
+            if (!UseSkillRequeriment(useSkillRequirements))
+            {
+                playAnimationFailed = true;
+                return;
+            }
+            Animator animator = useSkillRequirements.Animation.GetAnimator();
+            AnimationClip animationClip = Generics.GetAnimationClip(animator, _startSkillAnimationName);
+            if (animationClip == null)
+            {
+                playAnimationFailed = true;
+                return;
+            }
+            int playerAtkSpeed = useSkillRequirements.BasicStatus.GetAtkSpeed();
+            float animationSpeed = Generics.CalculateAnimationSpeed(playerAtkSpeed, _skillAttackSpeed);
+            animator.SetFloat("LayerOneAnimationSpeed", animationSpeed);
+            animator.Play(_startSkillAnimationName);
+            _isSkillPlayingStartAnimation = true;
+            playAnimationFailed = false;
+        }
+        catch
+        {
+            playAnimationFailed = true;
+        }
+    }
     //public abstract void useSkill(UseSkillRequirements useSkillRequirements);
     public abstract void StartUseSkill(UseSkillRequirements useSkillRequirements);
     public abstract void CancelStartSkill();
